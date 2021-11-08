@@ -54,10 +54,14 @@ playerCarlos.save(function(err){
     mongoose.disconnect();
 });
 
-// const objectSchemaPartidas = {
-//     _id: mongoose.Schema.Types.ObjectId,
-//     id_jugador: {type: Schema.ObjectId, ref: 'jugador'},
-//     fecha: Date,
-//     puntuacion: Number
-// };
-// const partidaSchema = mongoose.Schema(objectSchemaPartidas)
+const objectSchemaPartidas = {
+    _id: mongoose.Schema.Types.ObjectId,
+    id_jugador:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Player'
+    },
+    fecha: Date,
+    puntuacion: Number
+};
+const partidaSchema = mongoose.Schema(objectSchemaPartidas);
+const Game = mongoose.model('Game', partidaSchema);
