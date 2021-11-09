@@ -48,20 +48,30 @@ const carlos = {
 
 let playerCarlos = new Player (carlos);
 
-playerCarlos.save(function(err){
-    if(err) throw err;
-    console.log("Lo conseguimos meter");
-    mongoose.disconnect();
-});
+// playerCarlos.save(function(err){
+//     if(err) throw err;
+//     console.log("Lo conseguimos meter");
+//     // mongoose.disconnect();
+// });
 
 const objectSchemaPartidas = {
     _id: mongoose.Schema.Types.ObjectId,
-    id_jugador:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Player'
-    },
+    id_jugador: {type: mongoose.Schema.ObjectId, ref: 'Player'},
     fecha: Date,
     puntuacion: Number
 };
 const partidaSchema = mongoose.Schema(objectSchemaPartidas);
 const Game = mongoose.model('Game', partidaSchema);
+let partida = {
+    _id: new mongoose.Types.ObjectId(),
+    id_jugador: carlos._id,
+    fecha: Date.now(),
+    puntuacion: 7
+};
+let partidaJugada = new Game(partida);
+
+// partidaJugada.save(function(err){
+//     if (err) throw err;
+//     console.log("Partida guardada");
+//     mongoose.disconnect();
+// });
