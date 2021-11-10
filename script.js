@@ -70,7 +70,6 @@ async function creaPartida(){
         if (err) throw err;
         console.log("Partida guardada");
     suma()
-    // mongoose.disconnect();
     });
 }
 
