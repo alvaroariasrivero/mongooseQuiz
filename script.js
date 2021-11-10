@@ -17,12 +17,6 @@ const objectSchemaUsuarios = {
     email: {
         type: String,
         match: [/.+\@.+\..+/, 'Por favor ingrese un correo válido']
-        // validate:{
-        //     validator: function(mail){
-        //         return mail.includes('@') == true && mail.includes('.') == true;
-        //     },
-        //     message: 'Dirección email no válida'
-        // }
     },
     password:{
         type: String,
@@ -64,14 +58,41 @@ const partidaSchema = mongoose.Schema(objectSchemaPartidas);
 const Game = mongoose.model('Game', partidaSchema);
 let partida = {
     _id: new mongoose.Types.ObjectId(),
-    id_jugador: carlos._id,
+    id_jugador: '618ad6ab51359983bd9eb965',
     fecha: Date.now(),
     puntuacion: 7
 };
 let partidaJugada = new Game(partida);
 
-// partidaJugada.save(function(err){
+
+async function creaPartida(){
+    await partidaJugada.save(function(err){
+        if (err) throw err;
+        console.log("Partida guardada");
+    suma()
+    // mongoose.disconnect();
+    });
+}
+
+creaPartida()
+
+// Game.find({
+//     id_jugador: "618ad6ab51359983bd9eb965"
+// }).exec(function(err, partidas){
 //     if (err) throw err;
-//     console.log("Partida guardada");
+//     console.log("Partidas jugadas:\n"+partidas.length);
 //     mongoose.disconnect();
 // });
+
+function suma() {
+    Player.findById('618ad6ab51359983bd9eb965', function (err, player) {
+        if (err) throw err;
+        player.partidas += 1;
+        player.save(function (err) {
+            if (err) throw err;
+            console.log("Actualización correcta");
+            mongoose.disconnect();
+        });
+    });
+}
+
