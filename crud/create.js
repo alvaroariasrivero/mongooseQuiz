@@ -9,15 +9,15 @@ const Partida = require('../shchemas/games');
 ///////////////////////////Funciones creación///////////////////////////////////////
 
 async function creaJugador(){
-    const carlos = new Jugador({
+    const player = new Jugador({
         _id: new mongoose.Types.ObjectId(),
-        nombre: "Carlos María Isidro",
-        email: 'carlos@gmail.com',
-        password: 'caraculo',
+        nombre: "Antonio Alcántara",
+        email: 'mecagoenlalechemerche@gmail.com',
+        password: 'toritobravo',
         partidas: 0
     });
 
-    await carlos.save(function(err){
+    await player.save(function(err){
         if(err) throw err;
         console.log("Lo conseguimos meter");
         mongoose.disconnect();
@@ -27,7 +27,7 @@ async function creaJugador(){
 async function nuevaPartida(){
     let partida = new Partida({
         _id: new mongoose.Types.ObjectId(),
-        id_jugador: '618ad6ab51359983bd9eb965',
+        id_jugador: '618d07e52848c382b6d3c0e1',
         fecha: Date.now(),
         puntuacion: 7
     });
@@ -41,7 +41,7 @@ async function nuevaPartida(){
 }
 
 function suma() {
-    Jugador.findById('618ad6ab51359983bd9eb965', function (err, player) {
+    Jugador.findById('618d07e52848c382b6d3c0e1', function (err, player) {
         if (err) throw err;
         player.partidas += 1;
         player.save(function (err) {

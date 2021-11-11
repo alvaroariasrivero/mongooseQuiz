@@ -3,4 +3,7 @@ require('./connection');
 
 /////////////////////////////Aquí voy llamando a las funciones////////////////////////////////
 const {creaJugador, nuevaPartida} = require('./crud/create')
-nuevaPartida();
+const eliminarJugador = require('./crud/delete')
+// creaJugador();
+// nuevaPartida();
+// eliminarJugador();
