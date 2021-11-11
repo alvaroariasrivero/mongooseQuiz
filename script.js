@@ -6,4 +6,4 @@ const {creaJugador, nuevaPartida} = require('./crud/create')
 const eliminarJugador = require('./crud/delete')
 // creaJugador();
 // nuevaPartida();
-// eliminarJugador();
+eliminarJugador();

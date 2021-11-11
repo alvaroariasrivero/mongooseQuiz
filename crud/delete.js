@@ -7,16 +7,15 @@ const Jugador = require('../shchemas/player');
 function eliminarJugador(){
     Jugador.find({
         partidas: 0 
-    }).exec(function(err, player){
+    }).exec(async function(err, player){
         if(err) throw err;
         for(let i = 0; i < player.length; i++){
-        // console.log(player)
-            player[i].remove(function(err){
+            await player[i].remove(function(err){
                 if(err) throw err;
                 console.log("Jugador eliminado");
             });
         }
-        mongoose.disconnect;
+        mongoose.disconnect();
     });
 };
 

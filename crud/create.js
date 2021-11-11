@@ -29,7 +29,11 @@ async function nuevaPartida(){
         _id: new mongoose.Types.ObjectId(),
         id_jugador: '618d07e52848c382b6d3c0e1',
         fecha: Date.now(),
-        puntuacion: 7
+        puntuacion: 7,
+        preguntas:{
+            acertadas: [1, 2, 3, 4, 5, 6, 7],
+            falladas: [8, 9 ,10]
+        }
     });
 
         await partida.save(function(err){

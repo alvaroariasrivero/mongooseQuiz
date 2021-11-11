@@ -8,7 +8,11 @@ const partidaSchema = new mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     id_jugador: {type: mongoose.Schema.ObjectId, ref: 'Player'},
     fecha: Date,
-    puntuacion: Number
+    puntuacion: Number,
+    preguntas: {
+        acertadas: Array,
+        falladas: Array
+    }
 });
 
 module.exports = mongoose.model('Game', partidaSchema);
